@@ -20,18 +20,30 @@ define(function(require, exports, module) {
   // page content option
   var contentOptions = {
     height: window.innerHeight,
-    colors: [
+    backgroundColor: [
       'grey',
       'white',
       'grey',
       'white',
-      'grey',
-      'white'
+    ],
+    textColor: [
+      'white',
+      '#00BFFF',
+      'white',
+      '#00BFFF',
     ],
     html: [
       '<div class="intro-slide"><h1>QuickCall</h1> \
       <p>The first mobile app that allows internet based <br> voice-calling on the FireFox Marketplace.<br><br>Available on FireFox OS</p> \
-      <a href="#about" class="btn btn-circle page-scroll"></div>'
+      <a href="#about" class="btn btn-circle page-scroll"></div>',
+
+      '<div class="about"> \
+      <h2>About QuickCall</h2> \
+      <p>Making international calls is expensive and not covered in most phone plans.</p> \
+      <p>QuickCall allows you to make international calls at local rates.</p> \
+      <p>Simply enter a phone number and QuickCall will connect you. </p> \
+      <br><br> \
+      </div>'
     ],
     fontSize: '40px'
   }
@@ -43,7 +55,7 @@ define(function(require, exports, module) {
   function init(layoutOptions) {
     createLayout(layoutOptions.header, layoutOptions.footer);
     addFooter(layoutOptions.footer);
-    addContent(contentOptions.height, contentOptions.colors, contentOptions.fontSize, contentOptions.html);
+    addContent(contentOptions.height, contentOptions.backgroundColor, contentOptions.fontSize, contentOptions.html, contentOptions.textColor);
     addHeader(layoutOptions.header);
   }
 
@@ -63,7 +75,7 @@ define(function(require, exports, module) {
                   <div> \
                 </div>',
       properties: {
-        lineHeight: height + 'px',
+        lineHeight: height/4 + 'px',
         fontSize: height/2 + 'px',
 
         color: '#fff',
@@ -73,22 +85,21 @@ define(function(require, exports, module) {
     layout.header.add(header);
   }
 
-  function addContent(height, colors, fontSize, html) {
-    console.log(colors.length)
+  function addContent(height, backgroundColor, fontSize, html, textColor) {
     var scrollview = new Scrollview();
     var content = [];
     scrollview.sequenceFrom(content);
-    for(var i = 0; i < 10; i++) {
+    for(var i = 0; i < 4; i++) {
       temp = new Surface({
-        content: html[0],
+        content: html[i],
         size: [undefined, height],
         properties: {
           textAlign: 'center',
 
           fontSize: fontSize,
 
-          color: "#fff",
-          backgroundColor: colors[i % colors.length],
+          color: textColor[i],
+          backgroundColor: backgroundColor[i],
         }
       });
       temp.pipe(scrollview);

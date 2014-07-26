@@ -4,13 +4,14 @@ html {
 }
 
 .intro-slide {
-  /*color: #fff;*/
 }
 
 /* Navigation Bar CSS */
 .nav-bar {
-  padding-left: 20px;
-  padding-right: 20px;
+  font-weight: bold;
+  padding-top: 35px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .logo {
@@ -19,6 +20,11 @@ html {
 
 .tabs {
   float: right;
-  font-size: 25px;
+  font-size: 15px;
   word-spacing: 30px
+}
+
+/* Sections */
+.about {
+  
 }
