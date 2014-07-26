@@ -2,3 +2,23 @@ html {
   background-color: #fff;
   color: #000;
 }
+
+.intro-slide {
+  /*color: #fff;*/
+}
+
+/* Navigation Bar CSS */
+.nav-bar {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.logo {
+  float: left;
+}
+
+.tabs {
+  float: right;
+  font-size: 25px;
+  word-spacing: 30px
+}

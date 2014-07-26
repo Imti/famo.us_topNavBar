@@ -28,6 +28,11 @@ define(function(require, exports, module) {
       'grey',
       'white'
     ],
+    html: [
+      '<div class="intro-slide"><h1>QuickCall</h1> \
+      <p>The first mobile app that allows internet based <br> voice-calling on the FireFox Marketplace.<br><br>Available on FireFox OS</p> \
+      <a href="#about" class="btn btn-circle page-scroll"></div>'
+    ],
     fontSize: '40px'
   }
 
@@ -38,7 +43,7 @@ define(function(require, exports, module) {
   function init(layoutOptions) {
     createLayout(layoutOptions.header, layoutOptions.footer);
     addFooter(layoutOptions.footer);
-    addContent(contentOptions.height, contentOptions.colors, contentOptions.fontSize);
+    addContent(contentOptions.height, contentOptions.colors, contentOptions.fontSize, contentOptions.html);
     addHeader(layoutOptions.header);
   }
 
@@ -52,30 +57,38 @@ define(function(require, exports, module) {
 
   function addHeader(height) {
     var header = new Surface({
-      content: 'Header',
+      content: '<div class="nav-bar"><span class="logo">Q.C</span> \
+                  <div class="tabs"> \
+                    <span>ABOUT<span> <span>SIGNUP<span> <span>TEAM<span> \
+                  <div> \
+                </div>',
       properties: {
         lineHeight: height + 'px',
         fontSize: height/2 + 'px',
-        textAlign: 'center',
+
+        color: '#fff',
         backgroundColor: 'grey'
       }
     });
     layout.header.add(header);
   }
 
-  function addContent(height, colors, fontSize) {
+  function addContent(height, colors, fontSize, html) {
     console.log(colors.length)
     var scrollview = new Scrollview();
     var content = [];
     scrollview.sequenceFrom(content);
     for(var i = 0; i < 10; i++) {
       temp = new Surface({
-        content: 'page' + i,
+        content: html[0],
         size: [undefined, height],
         properties: {
           textAlign: 'center',
+
+          fontSize: fontSize,
+
+          color: "#fff",
           backgroundColor: colors[i % colors.length],
-          fontSize: fontSize
         }
       });
       temp.pipe(scrollview);
